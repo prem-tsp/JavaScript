@@ -1,0 +1,47 @@
+<html>
+    <body>
+        <input id="num" type="number" style="font-size: 1vw">
+        <div id="sequence"></div>
+        <button onclick="generate()">Click to generate sequence</button>
+        <button onclick="reset()">Reset</button>
+        <script>
+           //for easier change
+            var arr = [512];
+            
+            function calculate(num1)
+            {
+                console.log(num1);
+                //subject to change
+                var j = 9;
+                for(let i = 1;i < num1; i++)
+                {
+                    let temp = Math.pow(j,3);
+                    j++;
+                    arr.push(temp);
+                    console.log("inside");
+                }
+                console.log("in");
+                return arr;
+            }
+            function generate()
+            {
+                var num1 = document.getElementById("num").value;
+            
+                var ans = calculate(num1);
+                if(num1 < 1)
+                    ans = [0];  
+                for(let i = 0;i < ans.length; i++)
+                    console.log(ans[i]+" ");
+                var x = document.getElementById("sequence");
+                x.innerHTML = ans.map(Math.ceil);
+                arr.length = 1;
+            }
+
+            function reset()
+            {
+                document.getElementById("sequence").innerHTML = "";
+                document.getElementById("num").value = "";
+            }
+         </script>
+    </body>
+</html>
